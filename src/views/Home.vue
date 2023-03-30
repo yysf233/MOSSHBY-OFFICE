@@ -1,24 +1,6 @@
 <template>
   <div style="margin: 0 180px">
-    <!-- <div class="wrapper" ref="wrapper" @scroll="onScroll">
-      <div class="background" :style="{ height: `${total_height}px` }"></div>
-      <div class="list" ref="container">
-        <div class="zeroDiv" style="margin-top: 20px"></div>
-        <div class="firstDiv">
-          <hr />
-          <p>我的</p>
-          <hr />
-        </div>
-        <div
-          v-for="item in runList"
-          :class="['line', getClass(item.data.type)]"
-          :key="item.data.name"
-        >
-          <div class="item lt">{{ item.data.name }}</div>
-          <div class="item gt">{{ item.data.value }}</div>
-        </div>
-      </div>
-    </div> -->
+
   </div>
 </template>
 
