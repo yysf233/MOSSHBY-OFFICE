@@ -1,371 +1,258 @@
-
 <template>
-  <div class="container">
-    <div id="wrap" :style="{ height: screenHeight + 'px' }">
-      <div id="main" :style="{ top: nowTop + 'px' }">
-        <div id="pageUl">
-          <div class="aaa">
-            <ul type="circle">
-              <li
-                @click="navTo(1, $event)"
-                class="rightTreeText"
-                :class="{ textActive: curIndex == 1 }"
-              >
-                1
-              </li>
-              <li
-                @click="navTo(2, $event)"
-                class="rightTreeText"
-                :class="{ textActive: curIndex == 2 }"
-              >
-                2
-              </li>
-              <li
-                @click="navTo(3, $event)"
-                class="rightTreeText"
-                :class="{ textActive: curIndex == 3 }"
-              >
-                3
-              </li>
-              <li
-                @click="navTo(4, $event)"
-                class="rightTreeText"
-                :class="{ textActive: curIndex == 4 }"
-              >
-                4
-              </li>
-              <li
-                @click="navTo(5, $event)"
-                class="rightTreeText"
-                :class="{ textActive: curIndex == 5 }"
-              >
-                5
-              </li>
-              <li
-                @click="navTo(6, $event)"
-                class="rightTreeText"
-                :class="{ textActive: curIndex == 6 }"
-              >
-                6
-              </li>
-            </ul>
-            <!-- <div class="homeLine"></div> -->
-            <ul type="circle" title="point">
-              <div
-                @click="navTo(1, $event)"
-                class="whiteRoundBorder"
-                :class="{ active: curIndex == 1 }"
-              >
-                <li class="whiteRound"></li>
-              </div>
-              <div
-                @click="navTo(2, $event)"
-                class="whiteRoundBorder"
-                :class="{ active: curIndex == 2 }"
-              >
-                <li class="whiteRound"></li>
-              </div>
-              <div
-                @click="navTo(3, $event)"
-                class="whiteRoundBorder"
-                :class="{ active: curIndex == 3 }"
-              >
-                <li class="whiteRound"></li>
-              </div>
-              <div
-                @click="navTo(4, $event)"
-                class="whiteRoundBorder"
-                :class="{ active: curIndex == 4 }"
-              >
-                <li class="whiteRound"></li>
-              </div>
-              <div
-                @click="navTo(5, $event)"
-                class="whiteRoundBorder"
-                :class="{ active: curIndex == 5 }"
-              >
-                <li class="whiteRound"></li>
-              </div>
-              <div
-                @click="navTo(6, $event)"
-                class="whiteRoundBorder"
-                :class="{ active: curIndex == 6 }"
-              >
-                <li class="whiteRound"></li>
-              </div>
-            </ul>
-          </div>
+  <div style="margin: 0 180px">
+    <!-- <div class="wrapper" ref="wrapper" @scroll="onScroll">
+      <div class="background" :style="{ height: `${total_height}px` }"></div>
+      <div class="list" ref="container">
+        <div class="zeroDiv" style="margin-top: 20px"></div>
+        <div class="firstDiv">
+          <hr />
+          <p>我的</p>
+          <hr />
         </div>
         <div
-          style="
-            background-color: #1b6d85;
-            font-size: 46px;
-            color: #fff;
-            text-align: center;
-          "
-          id="page1"
-          class="page"
+          v-for="item in runList"
+          :class="['line', getClass(item.data.type)]"
+          :key="item.data.name"
         >
-          1
-        </div>
-        <div
-          style="
-            background-color: #5cb85c;
-            font-size: 46px;
-            color: #fff;
-            text-align: center;
-          "
-          id="page2"
-          class="page"
-        >
-          2
-        </div>
-        <div
-          style="
-            background-color: #8a6d3b;
-            font-size: 46px;
-            color: #fff;
-            text-align: center;
-          "
-          id="page3"
-          class="page"
-        >
-          3
-        </div>
-        <div
-          style="
-            background-color: #337ab7;
-            font-size: 46px;
-            color: #fff;
-            text-align: center;
-          "
-          id="page4"
-          class="page"
-        >
-          4
-        </div>
-        <div
-          style="
-            background-color: #66512c;
-            font-size: 46px;
-            color: #fff;
-            text-align: center;
-          "
-          id="page5"
-          class="page"
-        >
-          5
-        </div>
-        <div
-          style="
-            background-color: rgb(255, 179, 32);
-            font-size: 46px;
-            color: #fff;
-            text-align: center;
-          "
-          id="page5"
-          class="page"
-        >
-          6
-          <div class="wrapper">
-            <Footer />
-          </div>
+          <div class="item lt">{{ item.data.name }}</div>
+          <div class="item gt">{{ item.data.value }}</div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import Footer from '@/components/Footer.vue'
-export default {
-  components: {
-    Footer
-  },
-  name: 'home',
-  data () {
-    return {
-      screenWeight: 0, // 屏幕宽度
-      screenHeight: 0, // 屏幕高度
-      index: 1, // 用于判断翻页
-      curIndex: 1, // 当前页的index
-      startTime: 0, // 翻屏起始时间
-      endTime: 0, // 上一次翻屏结束时间
-      nowTop: 0, // 翻屏后top的位置
-      pageNum: 0, // 一共有多少页
-      main: Object,
-      obj: Object
-    }
-  },
-  mounted () {
-    this.screenWeight = document.documentElement.clientWidth
-    this.screenHeight = document.documentElement.clientHeight
-    this.main = document.getElementById('main')
-    this.obj = document.getElementsByTagName('div')
-    for (let i = 0; i < this.obj.length; i++) {
-      if (this.obj[i].className === 'page') {
-        this.obj[i].style.height = this.screenHeight + 'px'
-      }
-    }
-    this.pageNum = document.querySelectorAll('.page').length
+import city_data from "./city.json";
 
-    // 浏览器兼容
-    if (navigator.userAgent.toLowerCase().indexOf('firefox') !== -1) {
-      document.addEventListener('DOMMouseScroll', this.scrollFun, false)
-    } else if (document.addEventListener) {
-      document.addEventListener('mousewheel', this.scrollFun, false)
-    } else if (document.attachEvent) {
-      document.attachEvent('onmousewheel', this.scrollFun)
-    } else {
-      document.onmousewheel = this.scrollFun
-    }
+export default {
+  name: "Home",
+  props: {
+    cache_screens: {
+      // 缓冲的屏幕数量
+      type: Number,
+      default: 1,
+    },
+  },
+  data() {
+    return {
+      list: [], // 源数据
+      runList: [], // 运行时的列表
+      total_height: 0, // 列表总高度
+      maxNum: 0, // 一屏幕容纳的最大数量
+      distance: 0, // 存储滚动的距离
+    };
+  },
+  mounted() {
+    this.genData();
+    this.init();
+    this.getRunData();
   },
   methods: {
-    navTo (a) {
-      console.log(this.index)
-      console.log('a', a)
-      this.index = a
-      this.toPage(a)
-      this.active = a
-      console.log(this.active)
-    },
-    scrollFun (event) {
-      this.startTime = new Date().getTime()
-      // mousewheel事件中的 “event.wheelDelta” 属性值：返回的如果是正值说明滚轮是向上滚动
-      // DOMMouseScroll事件中的 “event.detail” 属性值：返回的如果是负值说明滚轮是向上滚动
-      const delta = event.detail || -event.wheelDelta
-      // 如果当前滚动开始时间和上次滚动结束时间的差值小于1.5s，则不执行翻页动作，这样做是为了实现类似节流的效果
-      if (this.startTime - this.endTime > 1500) {
-        if (
-          delta > 0 &&
-          parseInt(this.main.offsetTop) >=
-            -(this.screenHeight * (this.pageNum - 2))
-        ) {
-          // 向下滚动
-          this.index++
-          this.toPage(this.index)
-        } else if (delta < 0 && parseInt(this.main.offsetTop) < 0) {
-          // 向上滚动
-          this.index--
-          this.toPage(this.index)
-        }
-        // 本次翻页结束，记录结束时间，用于下次判断
-        this.endTime = new Date().getTime()
+    getClass(type) {
+      switch (type) {
+        case 1:
+          return "one";
+        case 2:
+          return "two";
+        case 3:
+          return "three";
+        default:
+          return "";
       }
     },
-    // 翻页
-    toPage (index) {
-      if (index !== this.curIndex) {
-        const delta = index - this.curIndex
-        this.nowTop = this.nowTop - delta * this.screenHeight
-        this.curIndex = index
+    init() {
+      const containerHeight = parseInt(
+        getComputedStyle(this.$refs.wrapper).height
+      );
+      //一屏的最大数量
+      this.maxNum = Math.ceil(containerHeight / this.min_height);
+      console.log(`maxNum:${this.maxNum}`);
+    },
+    onScroll(e) {
+      if (this.ticking) {
+        return;
+      }
+      this.ticking = true;
+      requestAnimationFrame(() => {
+        this.ticking = false;
+      });
+      const distance = e.target.scrollTop;
+      this.distance = distance;
+      this.getRunData(distance);
+    },
+    //二分法计算起始索引
+    getStartIndex(scrollTop) {
+      let start = 0,
+        end = this.list.length - 1;
+      while (start < end) {
+        const mid = Math.floor((start + end) / 2);
+        const { top, height } = this.list[mid];
+        if (scrollTop >= top && scrollTop < top + height) {
+          start = mid;
+          break;
+        } else if (scrollTop >= top + height) {
+          start = mid + 1;
+        } else if (scrollTop < top) {
+          end = mid - 1;
+        }
+      }
+      return start;
+    },
+    getRunData(distance = null) {
+      //滚动的总距离
+      const scrollTop = distance ? distance : this.$refs.container.scrollTop;
+
+      //在哪个范围内不执行滚动
+      if (this.scroll_scale) {
+        if (
+          scrollTop > this.scroll_scale[0] &&
+          scrollTop < this.scroll_scale[1]
+        ) {
+          return;
+        }
+      }
+
+      //起始索引
+      let start_index = this.getStartIndex(scrollTop);
+      start_index = start_index < 0 ? 0 : start_index;
+
+      //上屏索引
+      let upper_start_index = start_index - this.maxNum * this.cache_screens;
+      upper_start_index = upper_start_index < 0 ? 0 : upper_start_index;
+
+      // 调整offset
+      this.$refs.container.style.transform = `translate3d(0,${this.list[upper_start_index].top}px,0)`;
+
+      //中间屏幕的元素
+      const mid_list = this.list.slice(start_index, start_index + this.maxNum);
+      // 上屏
+      const upper_list = this.list.slice(upper_start_index, start_index);
+      // 下屏元素
+      let down_start_index = start_index + this.maxNum;
+      down_start_index =
+        down_start_index > this.list.length - 1
+          ? this.list.length
+          : down_start_index;
+
+      this.scroll_scale = [
+        this.list[Math.floor(upper_start_index + this.maxNum / 2)].top,
+        this.list[Math.ceil(start_index + this.maxNum / 2)].top,
+      ];
+      const down_list = this.list.slice(
+        down_start_index,
+        down_start_index + this.maxNum * this.cache_screens
+      );
+      this.runList = [...upper_list, ...mid_list, ...down_list];
+    },
+    //生成数据
+    genData() {
+      function getHeight(type) {
+        return 50;
+        // switch (type) {
+        //   case 1:
+        //     return 50;
+        //   case 2:
+        //     return 100;
+        //   case 3:
+        //     return 150;
+        //   default:
+        //     return "";
+        // }
+      }
+      let total_height = 0;
+      const list = city_data.map((data, index) => {
+        const height = getHeight(data.type);
+        const ob = {
+          index,
+          height,
+          top: total_height,
+          data,
+        };
+        total_height += height;
+        return ob;
+      });
+      this.total_height = total_height; //  列表总高度
+      this.list = list;
+      this.min_height = 50; // 最小高度是50
+    },
+  },
+};
+</script>
+<style lang="scss" scoped>
+.firstDiv {
+  display: flex;
+  hr {
+    margin: 13px auto;
+    height: 0px;
+    width: 600px;
+    border: 1px solid #e6e6e6;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+.wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 60px;
+  overflow-y: scroll;
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+  .list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+.line {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  .item {
+    height: 100%;
+    line-height: 40px;
+    color: #999;
+    &.lt {
+      margin-left: 10px;
+    }
+    &.gt {
+      margin-right: 10px;
+    }
+  }
+  &.one {
+    height: 50px;
+  }
+  &.two {
+    height: 100px;
+    .item {
+      color: #666;
+    }
+  }
+  &.three {
+    height: 150px;
+    .item {
+      color: #005aa0;
+    }
+    .img-container {
+      display: flex;
+      align-items: center;
+      img {
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
       }
     }
   }
-}
-</script>
-<style>
-html,
-body {
-  height: 100%;
-}
-
-body,
-ul,
-li,
-a,
-p,
-div {
-  /*慎删*/
-  padding: 0px;
-  margin: 0px;
-}
-
-ul,
-li {
-  list-style: none;
-}
-
-#wrap {
-  overflow: hidden;
-  width: 100%;
-}
-
-.homeLine {
-  width: 0.01rem;
-  height: 4.86rem;
-  background: linear-gradient(
-    244deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  margin: 0 10px;
-}
-
-#main {
-  position: relative;
-  transition: top 1.5s;
-}
-
-.page {
-  /*谨删*/
-  width: 100%;
-  margin: 0;
-}
-
-#pageUl {
-  position: fixed;
-  right: 10px;
-}
-
-.aaa {
-  top: 50%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  position: fixed;
-  right: 30px;
-}
-
-[title="point"] li {
-  font-size: 30px;
-  border-radius: 4px;
-  list-style: none;
-}
-
-/* 页面样式 */
-.whiteRoundBorder {
-  padding: 5px;
-  border: 1px solid red transparent;
-  margin-bottom: 10px;
-}
-
-.whiteRound {
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.active li {
-  border: 1px solid rgb(255, 255, 255);
-  border-radius: 4px;
-  background: rgb(255, 255, 255);
-}
-
-.rightTreeText {
-  font-size: 14px;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 7px;
-}
-
-.textActive {
-  font-size: 14px;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 1);
 }
 </style>
