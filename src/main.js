@@ -1,4 +1,7 @@
 import Vue from 'vue'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+// import 'swiper/swiper-bundle.css'
 import App from './App.vue'
 import router from './router'
 import Vuesax from 'vuesax'
@@ -25,6 +28,7 @@ GitHub: https://github.com/samzhangjy/VueBlogger\nPlease star & fork to support 
 Vue.config.productionTip = false
 
 Vue.use(Vuesax, {})
+Vue.use(ElementUI);
 
 Vue.mixin({
   methods: {

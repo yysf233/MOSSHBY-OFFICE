@@ -1,240 +1,855 @@
 <template>
-  <div style="margin: 0 180px">
+  <div class="container">
+    <!-- 轮播图 -->
+    <el-carousel height="500px" :interval="5000" arrow="always" indicator-position="none">
+      <el-carousel-item v-for="item in 3" :key="item">
+        <div>
 
+        </div>
+      </el-carousel-item>
+    </el-carousel>
+    <!-- 最新产品 -->
+    <div class="new-product-wrap lazy-animate-init lazy-animate-run" data-lazy-id="85" style="transition-delay: 0.2s;">
+      <div class="line-wrap">
+        <div class="line"></div>
+        <div class="line-content">
+          <p class="title">最新产品</p>
+          <p>关注动态 改变自己</p>
+          <div class="circle">
+            <p></p>
+            <p></p>
+          </div>
+        </div>
+        <div class="line-right"></div>
+      </div>
+      <div class="swiper">
+        <swiper :options="swiperOption" ref="mySwiper">
+          <swiper-slide>I'm Slide 1</swiper-slide>
+          <swiper-slide>I'm Slide 2</swiper-slide>
+          <swiper-slide>I'm Slide 3</swiper-slide>
+          <div class="swiper-pagination" slot="pagination" ></div>
+          <div class="swiper-button-prev" slot="button-prev"></div>
+          <div class="swiper-button-next" slot="button-next"></div>
+        </swiper>
+      </div>
+
+    </div>
+    <!-- 预约流程 -->
+    <div class="reservation-process-wrap lazy-animate-init lazy-animate-run" data-lazy-id="20"
+      style="transition-delay: 0.2s;">
+      <div class="line-wrap">
+        <div class="line"></div>
+        <div class="line-content">
+          <p class="title">预约流程</p>
+          <p>生活需要仪式感</p>
+          <div class="circle">
+            <p></p>
+            <p></p>
+          </div>
+        </div>
+        <div class="line-right"></div>
+      </div>
+      <div class="process-wrap">
+        <div class="process-content lazy-animate-init lazy-animate-run" data-lazy-id="13"><img
+            src="../images/himo.33bce8bc.png">
+          <div class="item-width lazy-animate-init lazy-animate-run" data-lazy-id="12">
+            <p>Step1</p>
+            <p class="process-name">关注海马体</p><span>关注海马体公众号了解最近上新产品</span><span class="line"></span>
+          </div>
+        </div>
+        <div class="process-content lazy-animate-init lazy-animate-run" data-lazy-id="15" style="transition-delay: 0.2s;">
+          <img src="../images/chooseStore.ebd559d3.png">
+          <div class="item-width lazy-animate-init lazy-animate-run" data-lazy-id="14" style="transition-delay: 0.2s;">
+            <p>Step2</p>
+            <p class="process-name">确认产品</p><span>确认您预约的产品和拍摄门店</span><span class="line"></span>
+          </div>
+        </div>
+        <div class="process-content lazy-animate-init lazy-animate-run" data-lazy-id="17" style="transition-delay: 0.4s;">
+          <img src="../images/appointment.d0145d0f.png">
+          <div class="item-width lazy-animate-init lazy-animate-run" data-lazy-id="16" style="transition-delay: 0.4s;">
+            <p>Step3</p>
+            <p class="process-name">预约时间</p><span>提前预约避免错过重要时刻</span><span class="line"></span>
+          </div>
+        </div>
+        <div class="process-content lazy-animate-init lazy-animate-run" data-lazy-id="19" style="transition-delay: 0.6s;">
+          <img src="../images/confirmOrder.09411bfb.png">
+          <div class="item-width lazy-animate-init lazy-animate-run" data-lazy-id="18" style="transition-delay: 0.6s;">
+            <p>Step4</p>
+            <p class="process-name">确认下单</p><span>下单后期待最美的自己</span><span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- HIMO标准服务 -->
+    <div class="standard-service-wrap lazy-animate-init lazy-animate-run" data-lazy-id="28">
+      <div class="line-wrap">
+        <div class="line"></div>
+        <div class="line-content">
+          <p class="title">HIMO标准服务</p>
+          <p>极致服务 最好的你</p>
+          <div class="circle">
+            <p></p>
+            <p></p>
+          </div>
+        </div>
+        <div class="line-right"></div>
+      </div>
+      <div class="tab-wrap">
+        <ul>
+          <li :class="{ active: isShow === 1 }" @click="handleTab(1)">
+            <p href="#section-bar-0">海马体标准服务</p>
+          </li>
+          <li :class="{ active: isShow === 2 }" @click="handleTab(2)">
+            <p href="#section-bar-1">大师店标准服务</p>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <section v-if="isShow === 1" class="tab-section active">
+            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="63"><img
+                src="../images/photography.png">
+              <p class="server-name">摄影</p>
+              <p class="font-style">Photo</p><span>使用专业顶级的设备，统一培训的摄影师。给您全程微笑的服务，希望带给您一张机智的照片让一切舍不得忘掉的都留下来。</span>
+            </div>
+            <div class="server-content lazy-animate-init lazy-animate-run" style="transition-delay: 0.2s;"
+              data-lazy-id="64"><img src="../images/makeup.png">
+              <p class="server-name">化妆</p>
+              <p class="font-style">Makeup</p><span>使用一线名牌化妆品所有化妆师经过专业培训，
+                塑造饱满自信的状态，确保您的每一次上镜。</span>
+            </div>
+            <div class="server-content lazy-animate-init lazy-animate-run" style="transition-delay: 0.4s;"
+              data-lazy-id="65"><img src="../images/clothing.png">
+              <p class="server-name">服装</p>
+              <p class="font-style">Dress</p><span>我们定期清洗每一件服装，确保干净整洁带有清香。我们专业定制，确保服装质量上乘，尺码齐全，样式丰富。</span>
+            </div>
+            <div class="server-content lazy-animate-init lazy-animate-run" style="transition-delay: 0.6s;"
+              data-lazy-id="66"><img src="../images/ps.png">
+              <p class="server-name">修图</p>
+              <p class="font-style">PS</p><span>每个坐在您身边的修图师都经过专业培训，当面确认您的需求，注重效率与体验，iMAC电脑修图，以确保最优标准最高画质。</span>
+            </div>
+            <div class="server-content lazy-animate-init lazy-animate-run" style="transition-delay: 0.8s;"
+              data-lazy-id="67"><img src="../images/print.png">
+              <p class="server-name">冲印</p>
+              <p class="font-style">Print</p><span>EPSIN Surelab
+                系列高端商务用机位电压打印头专业影响及输出，带来私人杂志影像体验。</span>
+            </div>
+          </section>
+          <section v-if="isShow === 2" class="tab-section active">
+            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="68"><img
+                src="../images/marshalling.fa0e0b0d.png">
+              <p class="server-name">视觉</p>
+              <p class="font-style">Vision</p><span>启用全新金标LOGO,全套独家VI定制，带给你全新视觉体验。</span>
+            </div>
+            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="69"
+              style="transition-delay: 0.2s;"><img src="../images/staff.c4b9a9e3.png">
+              <p class="server-name">人员</p>
+              <p class="font-style">Service</p><span>优选海马体工匠大师，经过全国统一培训，形象气质俱佳，统一黑金LOGO衬衫，享受尊贵服务。</span>
+            </div>
+            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="70"
+              style="transition-delay: 0.4s;"><img src="../images/clothing.10b90e5d.png">
+              <p class="server-name">服装</p>
+              <p class="font-style">Dress</p><span>选用高端统一定制服装，尺码齐全，服装定期送洗，高频率更新更换，保证服装质感。</span>
+            </div>
+            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="71"
+              style="transition-delay: 0.6s;"><img src="../images/makeup.96d6b5c7.png">
+              <p class="server-name">化妆</p>
+              <p class="font-style">Makeup</p><span>配备一线大牌化妆品、热门化妆单品，迪奥、香奈儿、雅诗兰黛、阿玛尼等一次性化妆用具，确保干净专一。</span>
+            </div>
+            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="72"
+              style="transition-delay: 0.8s;"><img src="../images/space.c42043e6.png">
+              <p class="server-name">空间</p>
+              <p class="font-style">Space</p><span>刷新视觉嗅觉，顶级音响烘托，全套BOSE室内音响系统，airaroma室内香氛系统，专属海马体独有味道。</span>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+    <!-- 关于我们 -->
+    <div class="about-us lazy-animate-init lazy-animate-run" data-lazy-id="28">
+      <div class="line-wrap">
+        <div class="line"></div>
+        <div class="line-content">
+          <p class="title">关于我们</p>
+          <p>极致服务 最好的你</p>
+          <div class="circle">
+            <p></p>
+            <p></p>
+          </div>
+        </div>
+        <div class="line-right"></div>
+      </div>
+      <div class="title">
+        <h1>毛衫与白</h1>
+      </div>
+      <div class="introduction">
+        <p>这里是毛衫与白摄影工作室,期待与您的合作! #街拍美女 #街头潮范儿 #人像摄影 #校园 #德州学院 </p>
+      </div>
+      <div class="content-cell pos-img">
+        <div class="code-content">
+          <a href="#javascript;">
+            <img src="../images/抖音.png" class="code-icon">
+          </a>
+          <div class="code douyin" ref="douyin">
+            <img src="../images/douyin-code.png" alt="">
+            <p class="code-attention">关注抖音</p>
+          </div>
+        </div>
+        <div class="code-content">
+          <a href="#javascript;">
+            <img src="../images/bilibili.png" class="code-icon">
+          </a>
+          <div class="code bilibili" ref="bilibili"><img src="../images/bilibili-code.png" alt="">
+            <p class="code-attention">关注b站</p>
+          </div>
+        </div>
+        <div class="code-content">
+          <a href="#javascript;">
+            <img src="../images/小红书.png" class="code-icon">
+          </a>
+          <div class="code redbook" ref="addShow"><img src="../images/red-book-code.png" alt="">
+            <p class="code-attention">关注小红书</p>
+          </div>
+        </div>
+        <div class="code-content">
+          <a href="#javascript;">
+            <img src="../images/公众号.png" class="code-icon">
+          </a>
+          <div class="code gongzhong" ref="addShow"><img src="../images/review-code.png" alt="">
+            <p class="code-attention">关注公众号</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="footer-wrap">
+      <div class="footer-content">
+        <div class="company-logo"><img src="../images/毛衫与白LOGO.png" alt="">
+        </div>
+        <div class="whiteplace"></div>
+        <div class="company-content">
+          <div class="content">
+            <div class="title">联系海马体</div>
+            <p>400-068-5666</p>
+          </div>
+          <div class="company-code">
+            <img src="../images/review-code.png" alt="">
+            <p>扫码预约拍摄</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>浙公网安备 33011802000662</p>
+        <p><a href="https://beian.miit.gov.cn/" target="_blank" class="jump-page">浙ICP备11062584号-3</a></p>
+      </div>
+    </div>
   </div>
 </template>
-
 <script>
-import city_data from "./city.json";
-
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+import "../../dist/css/swiper.min.css";
 export default {
-  name: "Home",
-  props: {
-    cache_screens: {
-      // 缓冲的屏幕数量
-      type: Number,
-      default: 1,
-    },
+  components: {
+    swiper,
+    swiperSlide,
   },
   data() {
     return {
-      list: [], // 源数据
-      runList: [], // 运行时的列表
-      total_height: 0, // 列表总高度
-      maxNum: 0, // 一屏幕容纳的最大数量
-      distance: 0, // 存储滚动的距离
+      arr:['精致证件照','职业形象照','文艺照','花颜照','轻婚纱'],
+      isShow: 1,
+      swiperOption: {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          stopOnLastSlide: false,
+          disableOnInteraction: false
+        },
+        // 显示分页
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true //允许分页点击跳转
+        },
+        // 设置点击箭头
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+      
+      }
     };
   },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.swiper;
+    }
+  },
   mounted() {
-    this.genData();
-    this.init();
-    this.getRunData();
+    // current swiper instance
+    // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
+    console.log("this is current swiper instance object", this.swiper);
+    // this.swiper.slideTo(3, 1000, false);
   },
   methods: {
-    getClass(type) {
-      switch (type) {
-        case 1:
-          return "one";
-        case 2:
-          return "two";
-        case 3:
-          return "three";
-        default:
-          return "";
-      }
-    },
-    init() {
-      const containerHeight = parseInt(
-        getComputedStyle(this.$refs.wrapper).height
-      );
-      //一屏的最大数量
-      this.maxNum = Math.ceil(containerHeight / this.min_height);
-      console.log(`maxNum:${this.maxNum}`);
-    },
-    onScroll(e) {
-      if (this.ticking) {
-        return;
-      }
-      this.ticking = true;
-      requestAnimationFrame(() => {
-        this.ticking = false;
-      });
-      const distance = e.target.scrollTop;
-      this.distance = distance;
-      this.getRunData(distance);
-    },
-    //二分法计算起始索引
-    getStartIndex(scrollTop) {
-      let start = 0,
-        end = this.list.length - 1;
-      while (start < end) {
-        const mid = Math.floor((start + end) / 2);
-        const { top, height } = this.list[mid];
-        if (scrollTop >= top && scrollTop < top + height) {
-          start = mid;
-          break;
-        } else if (scrollTop >= top + height) {
-          start = mid + 1;
-        } else if (scrollTop < top) {
-          end = mid - 1;
-        }
-      }
-      return start;
-    },
-    getRunData(distance = null) {
-      //滚动的总距离
-      const scrollTop = distance ? distance : this.$refs.container.scrollTop;
-
-      //在哪个范围内不执行滚动
-      if (this.scroll_scale) {
-        if (
-          scrollTop > this.scroll_scale[0] &&
-          scrollTop < this.scroll_scale[1]
-        ) {
-          return;
-        }
-      }
-
-      //起始索引
-      let start_index = this.getStartIndex(scrollTop);
-      start_index = start_index < 0 ? 0 : start_index;
-
-      //上屏索引
-      let upper_start_index = start_index - this.maxNum * this.cache_screens;
-      upper_start_index = upper_start_index < 0 ? 0 : upper_start_index;
-
-      // 调整offset
-      this.$refs.container.style.transform = `translate3d(0,${this.list[upper_start_index].top}px,0)`;
-
-      //中间屏幕的元素
-      const mid_list = this.list.slice(start_index, start_index + this.maxNum);
-      // 上屏
-      const upper_list = this.list.slice(upper_start_index, start_index);
-      // 下屏元素
-      let down_start_index = start_index + this.maxNum;
-      down_start_index =
-        down_start_index > this.list.length - 1
-          ? this.list.length
-          : down_start_index;
-
-      this.scroll_scale = [
-        this.list[Math.floor(upper_start_index + this.maxNum / 2)].top,
-        this.list[Math.ceil(start_index + this.maxNum / 2)].top,
-      ];
-      const down_list = this.list.slice(
-        down_start_index,
-        down_start_index + this.maxNum * this.cache_screens
-      );
-      this.runList = [...upper_list, ...mid_list, ...down_list];
-    },
-    //生成数据
-    genData() {
-      function getHeight(type) {
-        return 50;
-        // switch (type) {
-        //   case 1:
-        //     return 50;
-        //   case 2:
-        //     return 100;
-        //   case 3:
-        //     return 150;
-        //   default:
-        //     return "";
-        // }
-      }
-      let total_height = 0;
-      const list = city_data.map((data, index) => {
-        const height = getHeight(data.type);
-        const ob = {
-          index,
-          height,
-          top: total_height,
-          data,
-        };
-        total_height += height;
-        return ob;
-      });
-      this.total_height = total_height; //  列表总高度
-      this.list = list;
-      this.min_height = 50; // 最小高度是50
+    handleTab(val) {
+      this.isShow = val;
     },
   },
 };
+
 </script>
-<style lang="scss" scoped>
-.firstDiv {
-  display: flex;
-  hr {
-    margin: 13px auto;
-    height: 0px;
-    width: 600px;
-    border: 1px solid #e6e6e6;
-  }
-  p {
-    margin: 0;
-    padding: 0;
-  }
+ 
+<style>
+/* 轮播图 */
+.el-carousel {
+  margin-top: 88px;
 }
-.wrapper {
+
+.el-carousel__item {
+  background-position: center top;
+  /* background-size: 160%; */
+  /* width: 100%; */
+  /* background-repeat:no-repeat; */
+}
+
+.el-carousel__item:nth-of-type(1) {
+  background-image: url(../images/banner1.jpg);
+}
+
+.el-carousel__item:nth-of-type(2) {
+  background-image: url(../images/banner2.jpg);
+}
+
+.el-carousel__item:nth-of-type(3) {
+  background-image: url(../images/banner3.jpg);
+}
+
+.el-carousel__container .el-carousel__arrow {
+  background-color: #fff;
+  width: 80px;
+  height: 80px;
+  /* bottom: 0%; */
+  top: 92%;
+  border-radius: 0%;
+}
+
+.el-carousel__container .el-carousel__arrow--left {
+  left: 45%;
+}
+
+.el-carousel__container .el-carousel__arrow--right {
+  right: 45%;
+
+}
+
+.el-icon-arrow-right::before {
+  position: relative;
+  top: 10px;
+  right: 10px;
+}
+
+.el-icon-arrow-left::before {
+  position: relative;
+  top: 0px;
+  right: 10px;
+}
+
+.el-icon-arrow-right:after {
+  content: "";
+  display: inline-block;
+  height: 60px;
+  width: 1px;
+  margin-left: -50px;
+  margin-top: -40px;
+  background-color: #e3e3e6;
+  vertical-align: middle;
+}
+
+.el-icon-arrow-left:before,
+.el-icon-arrow-right:before {
+  color: rgb(80, 75, 75);
+  font-size: 40px;
+}
+
+/* 最新产品 */
+.new-product-wrap {
+  padding: 90px 0 20px;
+}
+
+.about-us .line-wrap,
+.standard-service-wrap .line-wrap,
+.new-product-wrap .line-wrap,
+.reservation-process-wrap .line-wrap {
+  width: 1152px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.new-product-wrap .swiper {
+  position: relative;
+}
+
+.swiper-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: pink;
+}
+
+.swiper-container .swiper-slide {
+  width: 100%;
+  line-height: 200px;
+  background: yellowgreen;
+  color: #000;
+  font-size: 16px;
+  text-align: center;
+}
+
+.line-wrap .line,
+.line-wrap .line-right {
   position: absolute;
+  top: 45px;
+  width: 384px;
+  height: 1px;
+  background-color: #ebebeb;
+  display: inline-block
+}
+
+.line-wrap .line {
   left: 0;
+}
+
+.line-wrap .line-right {
   right: 0;
+}
+
+.line-wrap .line-content {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.line-wrap .line-content .title {
+  padding-bottom: 4px;
+  color: #16161a;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.line-wrap .line-content p {
+  padding-bottom: 3px;
+  color: #919199;
+  font-size: 14px;
+}
+
+.line-content .circle {
+  padding-top: 4px;
+}
+
+.line-wrap .line-content .circle p {
+  width: 16px;
+  height: 16px;
+  background-color: #48ce55;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.line-wrap .line-content p {
+  padding-bottom: 3px;
+  color: #919199;
+  font-size: 14px;
+}
+
+.line-wrap .line-content p:last-child {
+  background-color: #000;
+  margin-left: 4px;
+}
+
+/* 预约流程 */
+.reservation-process-wrap {
+  background-color: #fafafa;
+}
+
+.reservation-process-wrap .process-wrap {
+  width: 1152px;
+  margin: 60px auto 0;
+}
+
+.reservation-process-wrap .process-wrap .process-content {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+}
+
+.reservation-process-wrap .process-wrap .process-content:first-child:before {
+  right: -78px;
+}
+
+.reservation-process-wrap .process-wrap .process-content:before {
+  position: absolute;
+  content: "";
+  width: 120px;
+  height: 1px;
+  background-color: #d8d8d8;
+  top: 543px;
+  right: -74px;
+}
+
+.reservation-process-wrap .process-wrap .process-content .item-width,
+.reservation-process-wrap .process-wrap .process-content img {
+  width: 320px;
+  text-align: center;
+  margin: 0;
+}
+
+.reservation-process-wrap .process-wrap .process-content p {
+  font-size: 20px;
+  color: #45454d;
+  font-weight: 600;
+}
+
+.reservation-process-wrap .process-wrap .process-content .process-name {
+  font-weight: 400;
+}
+
+.reservation-process-wrap .process-wrap .process-content p {
+  font-size: 20px;
+  color: #45454d;
+  font-weight: 600;
+}
+
+.reservation-process-wrap .process-wrap .process-content .process-name:after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  margin: 8px auto 14px;
+  background-color: #000;
+}
+
+.reservation-process-wrap .process-wrap .process-content span {
+  font-size: 13px;
+  color: #919199;
+}
+
+.reservation-process-wrap .process-wrap .process-content span {
+  font-size: 13px;
+  color: #919199;
+}
+
+/* HIMO标准服务 */
+.tab-wrap {
+  margin-top: 34px;
+
+}
+
+.server-content {
+  text-align: center;
+}
+
+.tab-wrap ul {
+  text-align: center;
+}
+
+.tab-wrap ul li {
+  display: inline-block;
+  padding: 16px 90px;
+  border: 1px solid #d4d4d9;
+  border-radius: 2px 0 0 2px;
+  font-size: 14px;
+  color: #45454d;
+}
+
+.tab-wrap ul li.active:last-child {
+  border: 1px solid #c5a563;
+  background-color: #c5a563;
+  color: #fff;
+}
+
+.tab-wrap ul li.active {
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+}
+
+.tab-wrap ul li:last-child {
+  border-radius: 0 2px 2px 0;
+}
+
+.tab-wrap .tab-content {
+  width: 1152px;
+  margin: 60px auto 0;
+}
+
+.tab-wrap .tab-content .tab-section.active {
+  display: block;
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+
+.tab-wrap .tab-content .tab-section {
+  display: none;
+}
+
+.tab-wrap .tab-content .tab-section .server-content {
+  display: inline-block;
+  width: 20%;
+  height: 384px;
+  vertical-align: top;
+}
+
+.lazy-animate-init.lazy-animate-run {
+  -webkit-transition: opacity .5s linear, -webkit-transform .5s ease;
+  transition: opacity .5s linear, -webkit-transform .5s ease;
+  transition: transform .5s ease, opacity .5s linear;
+  transition: transform .5s ease, opacity .5s linear, -webkit-transform .5s ease;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.lazy-animate-init {
+  visibility: hidden;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+.tab-wrap .tab-content .tab-section .server-content img {
+  width: 211px;
+}
+
+.tab-wrap .tab-content .tab-section img {
+  width: 100%;
+}
+
+.tab-wrap .tab-content .tab-section .server-content .server-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: #16161a;
+  padding: 20px 0 2px;
+}
+
+.tab-wrap .tab-content .tab-section .server-content p {
+  padding-bottom: 14px;
+  font-size: 14px;
+  font-family: IBMPlexSansBold;
+  color: #d4d4d9;
+}
+
+.tab-wrap .tab-content .tab-section .server-content .font-style {
+  font-style: oblique;
+}
+
+.tab-wrap .tab-content .tab-section .server-content p {
+  padding-bottom: 14px;
+  font-size: 14px;
+  font-family: IBMPlexSansBold;
+  color: #d4d4d9;
+}
+
+.tab-wrap .tab-content .tab-section .server-content span {
+  display: inline-block;
+  width: 187px;
+  color: #45454d;
+  font-size: 13px;
+}
+
+.tab-wrap .tab-content .tab-section img {
+  margin: 0;
+}
+
+.new-product-wrap,
+.standard-service-wrap {
+  background-color: #fff;
+  padding: 80px 0 88px;
+}
+
+
+
+.about-us {
+  background-color: #fafafa;
+  padding: 70px 0 103px 0;
+}
+
+.about-us .title h1,
+.about-us .introduction p {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.lazy-animate-init.lazy-animate-run {
+  -webkit-transition: opacity .5s linear, -webkit-transform .5s ease;
+  transition: opacity .5s linear, -webkit-transform .5s ease;
+  transition: transform .5s ease, opacity .5s linear;
+  transition: transform .5s ease, opacity .5s linear, -webkit-transform .5s ease;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.content-cell {
+  position: relative;
+  text-align: center;
+  padding: 5px 58px;
+  font-size: 12px;
+  color: #919199;
+  cursor: pointer;
+}
+
+.pos-img .code-content {
+  /* position: relative; */
+  display: inline-block;
+  /* padding-right: 5px; */
+}
+
+.code-content {
+  width: 400px;
+  height: 100px;
+  margin-top: 50px;
+}
+
+.pos-img .code-content .code-icon {
+  width: 150px;
+}
+
+.content-cell img {
+  display: inline-block;
+}
+
+.pos-img .code-content .code {
+  width: 174px;
+  height: 190px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+}
+
+.pos-img .code-content .douyin,
+.pos-img .code-content .bilibili,
+.pos-img .code-content .redbook,
+.pos-img .code-content .gongzhong {
+  position: absolute;
   bottom: 0;
-  top: 60px;
-  overflow-y: scroll;
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-  }
-  .list {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
+  right: 100px;
 }
-.line {
-  border-bottom: 1px solid #eee;
+
+.pos-img .code-content .code img {
+  width: 140px;
+  height: 140px;
+  margin-top: 16px;
+}
+
+.content-cell img {
+  display: inline-block;
+}
+
+.pos-img .code-content .code .code-attention {
+  color: #16161a;
+}
+
+.pos-img .code-content .code p {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.code-content:hover .code {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* footer */
+.footer-wrap {
+  position: absolute;
+  width: 100%;
+  background-color: #fafafa;
+  border-top: 1px solid #e3e3e6;
+}
+
+.footer-wrap .footer-content {
   display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  .item {
-    height: 100%;
-    line-height: 40px;
-    color: #999;
-    &.lt {
-      margin-left: 10px;
-    }
-    &.gt {
-      margin-right: 10px;
-    }
-  }
-  &.one {
-    height: 50px;
-  }
-  &.two {
-    height: 100px;
-    .item {
-      color: #666;
-    }
-  }
-  &.three {
-    height: 150px;
-    .item {
-      color: #005aa0;
-    }
-    .img-container {
-      display: flex;
-      align-items: center;
-      img {
-        width: 100px;
-        height: 100px;
-        margin-right: 10px;
-      }
-    }
-  }
+  width: 1152px;
+  height: 196px;
+  margin: 0 auto 62px;
+  padding-top: 48px;
 }
-</style>
+
+.footer-wrap .footer-content .company-logo {
+  flex: 1;
+}
+
+.footer-wrap .footer-content .company-logo img {
+  width: 150px;
+  background-color: green;
+  margin: 0;
+}
+
+.footer-wrap .footer-content .whiteplace {
+  flex: 1;
+}
+
+.footer-wrap .footer-content .company-content {
+  flex: 2;
+  display: flex;
+}
+
+.footer-wrap .footer-content .company-content .content {
+  flex: 1;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 39px;
+
+}
+
+.footer-wrap .footer-content .company-content .company-code {
+  flex: 1;
+}
+
+.footer-wrap .footer-content .company-code img {
+  width: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+.footer-wrap .footer-content .company-code p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #45454d;
+  text-align: center;
+}
+
+.footer-wrap .footer-bottom p:first-child:after {
+  display: inline-block;
+  content: "";
+  height: 18px;
+  width: 2px;
+  background-color: #919199;
+  vertical-align: bottom;
+  margin: 0 18px;
+}
+
+.footer-bottom {
+  text-align: center;
+  background-color: #f0f0f2;
+  color: #919199;
+  font-size: 20px;
+  padding: 18px 0;
+}
+
+.footer-wrap .footer-bottom p {
+  display: inline-block;
+}
+
+.footer-bottom p .jump-page {
+  color: #919199;
+  text-decoration: none;
+}
+</style>  

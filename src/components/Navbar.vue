@@ -1,16 +1,20 @@
 <template>
   <div>
-    <vs-navbar shadow-scroll fixed center-collapsed not-line>
+    <vs-navbar shadow-scroll fixed center-collapsed not-line style="border-radius: 0%;background-color: rgba(22, 22, 23, .8);">
       <template #left>
         <vs-button flat icon style="margin-right: 20px" class="menu-btn" @click="activeSidebar = !activeSidebar">
           <i class='bx bx-menu'></i>
         </vs-button>
         <router-link to="/" class="navbar-link">
-          <h3>{{ config.blogTitle }}</h3>
+          <h3>
+            <img src="../images/毛衫与白LOGO.png" alt="" >
+          </h3>
+          <!-- <img src="../images/毛衫与白LOGO.png" alt=""> -->
         </router-link>
       </template>
       <vs-navbar-item v-for="(link, index) in links" :key="index" :active="active.name === link.name"
-        :to="active.name === link.name ? null : link.url">
+        :to="active.name === link.name ? null : link.url" style="    color: #fff;
+    font-size: 20px;">
         {{ link.name }}
       </vs-navbar-item>
       <template #right>
@@ -28,7 +32,9 @@
     </vs-navbar>
     <vs-sidebar v-model="activeItem" :open.sync="activeSidebar">
       <template #logo>
-        <h3>{{ config.blogTitle }}</h3>
+        <h3>
+            <img src="../images/毛衫与白LOGO.png" alt="" >
+          </h3>
       </template>
       <vs-sidebar-item v-for="(link, index) in links" :key="index" :to="link.url" :id="link.name">
         {{ link.name }}
@@ -83,15 +89,15 @@ export default {
     }
   },
   methods: {
-    changeTheme: function () {
-      if (this.dark) {
-        document.getElementsByTagName('body')[0].setAttribute('vs-theme', 'light')
-        this.dark = false
-      } else {
-        document.getElementsByTagName('body')[0].setAttribute('vs-theme', 'dark')
-        this.dark = true
-      }
-    }
+    // changeTheme: function () {
+    //   if (this.dark) {
+    //     document.getElementsByTagName('body')[0].setAttribute('vs-theme', 'light')
+    //     this.dark = false
+    //   } else {
+    //     document.getElementsByTagName('body')[0].setAttribute('vs-theme', 'dark')
+    //     this.dark = true
+    //   }
+    // }
   },
   computed: {
     active: function () {
@@ -108,3 +114,20 @@ export default {
   }
 }
 </script>
+<style>
+h3 {
+  width: 60px;
+  margin:0
+}
+img {
+  width: 300%;
+    margin-top: -48px;
+    margin-bottom: -48px;
+}
+.off .bxs-moon:before {
+    content: "中";
+}
+.on .bxs-sun:before {
+    content: "俄";
+}
+</style>
