@@ -250,6 +250,7 @@
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "../../public/css/swiper.min.css";
 export default {
+  name:'Home',
   components: {
     swiper,
     swiperSlide,
@@ -284,11 +285,24 @@ export default {
       return this.$refs.mySwiper.swiper;
     }
   },
+  
   mounted() {
     // current swiper instance
     // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
     console.log("this is current swiper instance object", this.swiper);
     // this.swiper.slideTo(3, 1000, false);
+    // this.swiper('.swiper-container', {
+    //   on:{
+    //   init: function(){
+    //     swiperAnimateCache(this); //隐藏动画元素 
+    //     swiperAnimate(this); //初始化完成开始动画
+    //   }, 
+    //   slideChangeTransitionEnd: function(){ 
+    //     swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+    //     //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+    //   } 
+    // }
+    // })
   },
   methods: {
     handleTab(val) {

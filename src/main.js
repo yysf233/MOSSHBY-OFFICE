@@ -4,8 +4,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 // import 'swiper/swiper-bundle.css'
 import App from './App.vue'
 import router from './router'
-import Vuesax from 'vuesax'
-import 'vuesax/public/vuesax.css'
+// import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css'
 import 'boxicons'
 import 'boxicons/css/boxicons.min.css'
 
