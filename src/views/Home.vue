@@ -248,7 +248,7 @@
 </template>
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-import "../../dist/css/swiper.min.css";
+import "../../public/css/swiper.min.css";
 export default {
   components: {
     swiper,

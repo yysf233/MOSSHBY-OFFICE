@@ -5,7 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 import router from './router'
 import Vuesax from 'vuesax'
-import 'vuesax/dist/vuesax.css'
+import 'vuesax/public/vuesax.css'
 import 'boxicons'
 import 'boxicons/css/boxicons.min.css'
 
