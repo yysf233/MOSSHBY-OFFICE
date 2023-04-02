@@ -27,7 +27,7 @@
           <swiper-slide>I'm Slide 1</swiper-slide>
           <swiper-slide>I'm Slide 2</swiper-slide>
           <swiper-slide>I'm Slide 3</swiper-slide>
-          <div class="swiper-pagination" slot="pagination" ></div>
+          <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
@@ -186,37 +186,37 @@
       </div>
       <div class="content-cell pos-img">
         <div class="code-content">
-          <a href="#javascript;">
-            <img src="../images/抖音.png" class="code-icon">
-          </a>
-          <div class="code douyin" ref="douyin">
+          <!-- <a href="#javascript;"> -->
+          <img @click="{}" src="../images/抖音.png" class="code-icon">
+          <!-- </a> -->
+          <!-- <div class="code douyin" ref="douyin">
             <img src="../images/douyin-code.png" alt="">
             <p class="code-attention">关注抖音</p>
-          </div>
+          </div> -->
         </div>
         <div class="code-content">
-          <a href="#javascript;">
-            <img src="../images/bilibili.png" class="code-icon">
-          </a>
-          <div class="code bilibili" ref="bilibili"><img src="../images/bilibili-code.png" alt="">
+          <!-- <a href="#javascript;"> -->
+          <img src="../images/bilibili.png" class="code-icon">
+          <!-- </a> -->
+          <!-- <div class="code bilibili" ref="bilibili"><img src="../images/bilibili-code.png" alt="">
             <p class="code-attention">关注b站</p>
-          </div>
+          </div> -->
         </div>
         <div class="code-content">
-          <a href="#javascript;">
-            <img src="../images/小红书.png" class="code-icon">
-          </a>
-          <div class="code redbook" ref="addShow"><img src="../images/red-book-code.png" alt="">
+          <!-- <a href="#javascript;"> -->
+          <img src="../images/小红书.png" class="code-icon">
+          <!-- </a> -->
+          <!-- <div class="code redbook" ref="addShow"><img src="../images/red-book-code.png" alt="">
             <p class="code-attention">关注小红书</p>
-          </div>
+          </div> -->
         </div>
         <div class="code-content">
-          <a href="#javascript;">
-            <img src="../images/公众号.png" class="code-icon">
-          </a>
-          <div class="code gongzhong" ref="addShow"><img src="../images/review-code.png" alt="">
+          <!-- <a href="#javascript;"> -->
+          <img src="../images/公众号.png" class="code-icon">
+          <!-- </a> -->
+          <!-- <div class="code gongzhong" ref="addShow"><img src="../images/review-code.png" alt="">
             <p class="code-attention">关注公众号</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -256,7 +256,7 @@ export default {
   },
   data() {
     return {
-      arr:['精致证件照','职业形象照','文艺照','花颜照','轻婚纱'],
+      arr: ['精致证件照', '职业形象照', '文艺照', '花颜照', '轻婚纱'],
       isShow: 1,
       swiperOption: {
         loop: true,
@@ -275,7 +275,7 @@ export default {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
         },
-      
+
       }
     };
   },
@@ -673,7 +673,7 @@ export default {
 
 .about-us {
   background-color: #fafafa;
-  padding: 70px 0 103px 0;
+  padding: 70px 0 70px 0;
 }
 
 .about-us .title h1,
@@ -694,35 +694,32 @@ export default {
 }
 
 .content-cell {
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 65%;
+  margin: 0 auto;
   text-align: center;
-  padding: 5px 58px;
   font-size: 12px;
   color: #919199;
   cursor: pointer;
 }
 
-.pos-img .code-content {
-  /* position: relative; */
-  display: inline-block;
-  /* padding-right: 5px; */
-}
-
 .code-content {
-  width: 400px;
-  height: 100px;
-  margin-top: 50px;
+  width: 50%;
+  height: 80px;
+  /* margin-top: 50px; */
 }
 
 .pos-img .code-content .code-icon {
   width: 150px;
 }
 
+/* 
 .content-cell img {
   display: inline-block;
-}
+} */
 
-.pos-img .code-content .code {
+/* .pos-img .code-content .code {
   width: 174px;
   height: 190px;
   background-size: 100%;
@@ -730,32 +727,33 @@ export default {
   opacity: 0;
   z-index: -1;
   position: absolute;
-}
+} */
 
-.pos-img .code-content .douyin,
+/* .pos-img .code-content .douyin,
 .pos-img .code-content .bilibili,
 .pos-img .code-content .redbook,
 .pos-img .code-content .gongzhong {
   position: absolute;
   bottom: 0;
   right: 100px;
-}
+} */
 
-.pos-img .code-content .code img {
+/* .pos-img .code-content .code img {
   width: 140px;
   height: 140px;
   margin-top: 16px;
-}
+} */
 
 .content-cell img {
   display: inline-block;
 }
 
+/* 
 .pos-img .code-content .code .code-attention {
   color: #16161a;
-}
+} */
 
-.pos-img .code-content .code p {
+/* .pos-img .code-content .code p {
   text-align: center;
   margin-top: 50px;
 }
@@ -763,11 +761,10 @@ export default {
 .code-content:hover .code {
   opacity: 1;
   z-index: 1;
-}
+} */
 
 /* footer */
 .footer-wrap {
-  position: absolute;
   width: 100%;
   background-color: #fafafa;
   border-top: 1px solid #e3e3e6;
@@ -775,10 +772,11 @@ export default {
 
 .footer-wrap .footer-content {
   display: flex;
-  width: 1152px;
-  height: 196px;
-  margin: 0 auto 62px;
-  padding-top: 48px;
+  margin: 24px auto;
+  width: 80%;
+  /* height: 120px; */
+  /* margin: 0 auto 62px; */
+  /* padding-top: 48px; */
 }
 
 .footer-wrap .footer-content .company-logo {
@@ -805,7 +803,6 @@ export default {
   text-align: center;
   font-size: 28px;
   font-weight: 500;
-  margin-bottom: 39px;
 
 }
 
@@ -830,7 +827,7 @@ export default {
   display: inline-block;
   content: "";
   height: 18px;
-  width: 2px;
+  width: 1.5px;
   background-color: #919199;
   vertical-align: bottom;
   margin: 0 18px;
@@ -840,8 +837,8 @@ export default {
   text-align: center;
   background-color: #f0f0f2;
   color: #919199;
-  font-size: 20px;
-  padding: 18px 0;
+  font-size: 16px;
+  padding: 8px 0;
 }
 
 .footer-wrap .footer-bottom p {
