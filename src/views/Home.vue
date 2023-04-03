@@ -1,15 +1,27 @@
 <template>
   <div class="container">
     <!-- 轮播图 -->
-    <el-carousel height="500px" :interval="5000" arrow="always" indicator-position="none">
-      <el-carousel-item v-for="item in 3" :key="item">
-        <div>
-
+    <el-carousel class="animate__animated animate__fadeInUp " height="600px" :interval="5000" arrow="always"
+      indicator-position="none">
+      <!-- <el-carousel-item v-for="(item, index) in imgData" :key="index">
+        <div :style="{ 'background-image': 'url(' + 'image' + index + ');' }">
+        </div>
+      </el-carousel-item> -->
+      <el-carousel-item>
+        <div :style="'background-image:url(' + image0 + ');'">
+        </div>
+      </el-carousel-item>
+      <el-carousel-item>
+        <div :style="'background-image:url(' + image1 + ');'">
+        </div>
+      </el-carousel-item>
+      <el-carousel-item>
+        <div :style="'background-image:url(' + image2 + ');'">
         </div>
       </el-carousel-item>
     </el-carousel>
     <!-- 最新产品 -->
-    <div class="new-product-wrap lazy-animate-init lazy-animate-run" data-lazy-id="85" style="transition-delay: 0.2s;">
+    <div class="new-product-wrap">
       <div class="line-wrap">
         <div class="line"></div>
         <div class="line-content">
@@ -22,7 +34,7 @@
         </div>
         <div class="line-right"></div>
       </div>
-      <div class="swiper">
+      <div class="swiper animate__animated animate__fadeInUp">
         <swiper :options="swiperOption" ref="mySwiper">
           <swiper-slide>I'm Slide 1</swiper-slide>
           <swiper-slide>I'm Slide 2</swiper-slide>
@@ -35,8 +47,7 @@
 
     </div>
     <!-- 预约流程 -->
-    <div class="reservation-process-wrap lazy-animate-init lazy-animate-run" data-lazy-id="20"
-      style="transition-delay: 0.2s;">
+    <div id="id0" class="reservation-process-wrap">
       <div class="line-wrap">
         <div class="line"></div>
         <div class="line-content">
@@ -50,30 +61,29 @@
         <div class="line-right"></div>
       </div>
       <div class="process-wrap">
-        <div class="process-content lazy-animate-init lazy-animate-run" data-lazy-id="13"><img
-            src="../images/himo.33bce8bc.png">
-          <div class="item-width lazy-animate-init lazy-animate-run" data-lazy-id="12">
+        <div id="id1" class="process-content animate__repeat-2"><img src="../images/himo.33bce8bc.png">
+          <div class="item-width " data-lazy-id="12">
             <p>Step1</p>
             <p class="process-name">关注海马体</p><span>关注海马体公众号了解最近上新产品</span><span class="line"></span>
           </div>
         </div>
-        <div class="process-content lazy-animate-init lazy-animate-run" data-lazy-id="15" style="transition-delay: 0.2s;">
+        <div id="id2" class="process-content animate__repeat-2">
           <img src="../images/chooseStore.ebd559d3.png">
-          <div class="item-width lazy-animate-init lazy-animate-run" data-lazy-id="14" style="transition-delay: 0.2s;">
+          <div class="item-width " data-lazy-id="14" style="transition-delay: 0.2s;">
             <p>Step2</p>
             <p class="process-name">确认产品</p><span>确认您预约的产品和拍摄门店</span><span class="line"></span>
           </div>
         </div>
-        <div class="process-content lazy-animate-init lazy-animate-run" data-lazy-id="17" style="transition-delay: 0.4s;">
+        <div id="id3" class="process-content animate__repeat-2">
           <img src="../images/appointment.d0145d0f.png">
-          <div class="item-width lazy-animate-init lazy-animate-run" data-lazy-id="16" style="transition-delay: 0.4s;">
+          <div class="item-width " data-lazy-id="16" style="transition-delay: 0.4s;">
             <p>Step3</p>
             <p class="process-name">预约时间</p><span>提前预约避免错过重要时刻</span><span class="line"></span>
           </div>
         </div>
-        <div class="process-content lazy-animate-init lazy-animate-run" data-lazy-id="19" style="transition-delay: 0.6s;">
+        <div id="id4" class="process-content animate__repeat-2">
           <img src="../images/confirmOrder.09411bfb.png">
-          <div class="item-width lazy-animate-init lazy-animate-run" data-lazy-id="18" style="transition-delay: 0.6s;">
+          <div class="item-width " data-lazy-id="18" style="transition-delay: 0.6s;">
             <p>Step4</p>
             <p class="process-name">确认下单</p><span>下单后期待最美的自己</span><span class="line"></span>
           </div>
@@ -81,7 +91,7 @@
       </div>
     </div>
     <!-- HIMO标准服务 -->
-    <div class="standard-service-wrap lazy-animate-init lazy-animate-run" data-lazy-id="28">
+    <div class="standard-service-wrap">
       <div class="line-wrap">
         <div class="line"></div>
         <div class="line-content">
@@ -96,76 +106,73 @@
       </div>
       <div class="tab-wrap">
         <ul>
-          <li :class="{ active: isShow === 1 }" @click="handleTab(1)">
+          <li :class="{ active: isShow === true }" @click="handleTab(true)">
             <p href="#section-bar-0">海马体标准服务</p>
           </li>
-          <li :class="{ active: isShow === 2 }" @click="handleTab(2)">
+          <li :class="{ active: isShow === false }" @click="handleTab(false)">
             <p href="#section-bar-1">大师店标准服务</p>
           </li>
         </ul>
         <div class="tab-content">
-          <section v-if="isShow === 1" class="tab-section active">
-            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="63"><img
-                src="../images/photography.png">
+          <section v-show="isShow" class="tab-section active ">
+            <div class="server-content animate__animated animate__fadeInUp"><img src="../images/photography.png">
               <p class="server-name">摄影</p>
               <p class="font-style">Photo</p><span>使用专业顶级的设备，统一培训的摄影师。给您全程微笑的服务，希望带给您一张机智的照片让一切舍不得忘掉的都留下来。</span>
             </div>
-            <div class="server-content lazy-animate-init lazy-animate-run" style="transition-delay: 0.2s;"
-              data-lazy-id="64"><img src="../images/makeup.png">
+            <div class="server-content animate__delay-1s animate__animated animate__fadeInUp"
+              style="transition-delay: 0.2s;" data-lazy-id="64"><img src="../images/makeup.png">
               <p class="server-name">化妆</p>
               <p class="font-style">Makeup</p><span>使用一线名牌化妆品所有化妆师经过专业培训，
                 塑造饱满自信的状态，确保您的每一次上镜。</span>
             </div>
-            <div class="server-content lazy-animate-init lazy-animate-run" style="transition-delay: 0.4s;"
-              data-lazy-id="65"><img src="../images/clothing.png">
+            <div class="server-content animate__delay-2s animate__animated animate__fadeInUp"
+              style="transition-delay: 0.4s;" data-lazy-id="65"><img src="../images/clothing.png">
               <p class="server-name">服装</p>
               <p class="font-style">Dress</p><span>我们定期清洗每一件服装，确保干净整洁带有清香。我们专业定制，确保服装质量上乘，尺码齐全，样式丰富。</span>
             </div>
-            <div class="server-content lazy-animate-init lazy-animate-run" style="transition-delay: 0.6s;"
-              data-lazy-id="66"><img src="../images/ps.png">
+            <div class="server-content animate__delay-3s animate__animated animate__fadeInUp"
+              style="transition-delay: 0.6s;" data-lazy-id="66"><img src="../images/ps.png">
               <p class="server-name">修图</p>
               <p class="font-style">PS</p><span>每个坐在您身边的修图师都经过专业培训，当面确认您的需求，注重效率与体验，iMAC电脑修图，以确保最优标准最高画质。</span>
             </div>
-            <div class="server-content lazy-animate-init lazy-animate-run" style="transition-delay: 0.8s;"
-              data-lazy-id="67"><img src="../images/print.png">
+            <div class="server-content animate__delay-4s animate__animated animate__fadeInUp"
+              style="transition-delay: 0.8s;" data-lazy-id="67"><img src="../images/print.png">
               <p class="server-name">冲印</p>
               <p class="font-style">Print</p><span>EPSIN Surelab
                 系列高端商务用机位电压打印头专业影响及输出，带来私人杂志影像体验。</span>
             </div>
           </section>
-          <section v-if="isShow === 2" class="tab-section active">
-            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="68"><img
-                src="../images/marshalling.fa0e0b0d.png">
+          <section v-show="!isShow" class="tab-section active ">
+            <div class="server-content animate__animated animate__fadeInUp"><img src="../images/marshalling.fa0e0b0d.png">
               <p class="server-name">视觉</p>
               <p class="font-style">Vision</p><span>启用全新金标LOGO,全套独家VI定制，带给你全新视觉体验。</span>
             </div>
-            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="69"
-              style="transition-delay: 0.2s;"><img src="../images/staff.c4b9a9e3.png">
+            <div class="server-content animate__animated animate__fadeInUp animate__delay-1s  "><img
+                src="../images/staff.c4b9a9e3.png">
               <p class="server-name">人员</p>
               <p class="font-style">Service</p><span>优选海马体工匠大师，经过全国统一培训，形象气质俱佳，统一黑金LOGO衬衫，享受尊贵服务。</span>
             </div>
-            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="70"
+            <div class="server-content animate__animated animate__fadeInUp animate__delay-2s "
               style="transition-delay: 0.4s;"><img src="../images/clothing.10b90e5d.png">
               <p class="server-name">服装</p>
               <p class="font-style">Dress</p><span>选用高端统一定制服装，尺码齐全，服装定期送洗，高频率更新更换，保证服装质感。</span>
             </div>
-            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="71"
+            <div class="server-content animate__animated animate__fadeInUp animate__delay-3s "
               style="transition-delay: 0.6s;"><img src="../images/makeup.96d6b5c7.png">
               <p class="server-name">化妆</p>
               <p class="font-style">Makeup</p><span>配备一线大牌化妆品、热门化妆单品，迪奥、香奈儿、雅诗兰黛、阿玛尼等一次性化妆用具，确保干净专一。</span>
             </div>
-            <div class="server-content lazy-animate-init lazy-animate-run" data-lazy-id="72"
+            <div class="server-content animate__animated animate__fadeInUp animate__delay-4s "
               style="transition-delay: 0.8s;"><img src="../images/space.c42043e6.png">
               <p class="server-name">空间</p>
               <p class="font-style">Space</p><span>刷新视觉嗅觉，顶级音响烘托，全套BOSE室内音响系统，airaroma室内香氛系统，专属海马体独有味道。</span>
             </div>
           </section>
-
         </div>
       </div>
     </div>
     <!-- 关于我们 -->
-    <div class="about-us lazy-animate-init lazy-animate-run" data-lazy-id="28">
+    <div class="about-us ">
       <div class="line-wrap">
         <div class="line"></div>
         <div class="line-content">
@@ -249,16 +256,21 @@
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "../../public/css/swiper.min.css";
+import image0 from '../images/banner1.jpg'
+import image1 from '../images/banner1.jpg'
+import image2 from '../images/banner1.jpg'
 export default {
-  name:'Home',
+  name: 'Home',
   components: {
     swiper,
     swiperSlide,
   },
   data() {
     return {
+      list: [1, 2, 3, 4],
+      image0, image1, image2,
       arr: ['精致证件照', '职业形象照', '文艺照', '花颜照', '轻婚纱'],
-      isShow: 1,
+      isShow: true,
       swiperOption: {
         loop: true,
         autoplay: {
@@ -277,7 +289,9 @@ export default {
           prevEl: ".swiper-button-prev"
         },
 
-      }
+      },
+      bgImg: ['bg-img0', 'bg-img1', 'bg-img2'],
+      imgData: ['bg-img0', 'bg-img1', 'bg-img2'],
     };
   },
   computed: {
@@ -285,45 +299,92 @@ export default {
       return this.$refs.mySwiper.swiper;
     }
   },
-  
   mounted() {
-    // current swiper instance
     // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
     console.log("this is current swiper instance object", this.swiper);
-    // this.swiper.slideTo(3, 1000, false);
-    // this.swiper('.swiper-container', {
-    //   on:{
-    //   init: function(){
-    //     swiperAnimateCache(this); //隐藏动画元素 
-    //     swiperAnimate(this); //初始化完成开始动画
-    //   }, 
-    //   slideChangeTransitionEnd: function(){ 
-    //     swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
-    //     //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
-    //   } 
-    // }
-    // })
+    window.addEventListener('scroll', this.scrollToTop);
   },
   methods: {
     handleTab(val) {
       this.isShow = val;
+    }, scrollToTop() {
+      // 获取视窗高度
+      var domHight = document.body.offsetHeight;
+      // dom滚动位置
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      // 获取监听元素
+      var id;
+      // 获取监听元素本身高度
+      var scrollHeight;
+      // 获取监听元素距离视窗顶部距离
+      var offsetTop;
+      // 获取监听元素距离顶部高度-窗口高度 
+      var top;
+      // 元素距离底部的高度+元素本身高度
+      var bottom;
+      this.list.map((i) => {
+        id = document.getElementById(`id0`);
+        scrollHeight = id.scrollHeight;
+        offsetTop = id.offsetTop;
+        top = offsetTop - domHight > 0 ? offsetTop - domHight : 0;
+        bottom = scrollHeight + offsetTop;
+        // 页面滚动位置 > 元素距离顶部高度-窗口高度 && 页面滚动位置 < 元素距离顶部高度+元素本身高度
+        if (scrollTop >= top && scrollTop <= bottom) {
+          let ele = document.getElementById(`id${i}`);
+          if (i === 1) {
+            ele.className = "process-content animate__animated animate__fadeInUp"
+          } else {
+            ele.className = `process-content animate__delay-${i - 1}s  animate__animated animate__fadeInUp`
+          }
+          console.log('元素出现在可视区');
+        } else {
+          console.log('元素不在可视区');
+        }
+      });
     },
   },
 };
 
 </script>
- 
-<style>
+
+<style >
+.animate__delay-1s {
+  --animate-delay: 0.05s;
+}
+
+.animate__delay-2s {
+  --animate-delay: 0.1s;
+}
+
+.animate__delay-3s {
+  --animate-delay: 0.15s;
+}
+
+.animate__delay-4s {
+  --animate-delay: 0.17s;
+}
+
+.animate__delay-5s {
+  --animate-delay: 0.22s;
+}
+
 /* 轮播图 */
-.el-carousel {
-  margin-top: 88px;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .05s
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0
+}
+
+.item-title {
+  background: center no-repeat
 }
 
 .el-carousel__item {
   background-position: center top;
-  /* background-size: 160%; */
-  /* width: 100%; */
-  /* background-repeat:no-repeat; */
 }
 
 .el-carousel__item:nth-of-type(1) {
@@ -339,50 +400,31 @@ export default {
 }
 
 .el-carousel__container .el-carousel__arrow {
-  background-color: #fff;
-  width: 80px;
-  height: 80px;
-  /* bottom: 0%; */
-  top: 92%;
-  border-radius: 0%;
+  background-color: rgba(135, 135, 135, 0.15);
+  width: 6%;
+  height: 10%;
+  top: 95%;
+
+}
+
+.el-carousel__arrow i {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(34, 34, 34);
 }
 
 .el-carousel__container .el-carousel__arrow--left {
-  left: 45%;
+  border-radius: 5px 0 0 5px;
+  left: 44%;
+}
+
+.el-carousel__container .el-carousel__arrow:hover {
+  background-color: rgba(135, 135, 135, 0.4);
 }
 
 .el-carousel__container .el-carousel__arrow--right {
-  right: 45%;
-
-}
-
-.el-icon-arrow-right::before {
-  position: relative;
-  top: 10px;
-  right: 10px;
-}
-
-.el-icon-arrow-left::before {
-  position: relative;
-  top: 0px;
-  right: 10px;
-}
-
-.el-icon-arrow-right:after {
-  content: "";
-  display: inline-block;
-  height: 60px;
-  width: 1px;
-  margin-left: -50px;
-  margin-top: -40px;
-  background-color: #e3e3e6;
-  vertical-align: middle;
-}
-
-.el-icon-arrow-left:before,
-.el-icon-arrow-right:before {
-  color: rgb(80, 75, 75);
-  font-size: 40px;
+  border-radius: 0 5px 5px 0;
+  right: 44%;
 }
 
 /* 最新产品 */
@@ -423,7 +465,7 @@ export default {
 .line-wrap .line-right {
   position: absolute;
   top: 45px;
-  width: 384px;
+  width: 25%;
   height: 1px;
   background-color: #ebebeb;
   display: inline-block
@@ -483,6 +525,7 @@ export default {
 
 /* 预约流程 */
 .reservation-process-wrap {
+  padding: 80px 0px;
   background-color: #fafafa;
 }
 
@@ -680,14 +723,14 @@ export default {
 .new-product-wrap,
 .standard-service-wrap {
   background-color: #fff;
-  padding: 80px 0 88px;
+  padding: 80px 0px;
 }
 
 
 
 .about-us {
   background-color: #fafafa;
-  padding: 70px 0 70px 0;
+  padding: 80px 0px;
 }
 
 .about-us .title h1,
@@ -863,4 +906,4 @@ export default {
   color: #919199;
   text-decoration: none;
 }
-</style>  
+</style>

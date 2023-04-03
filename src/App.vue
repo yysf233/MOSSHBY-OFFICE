@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="content">
-    <Navbar/>
-    <router-view  />
+    <Navbar />
+    <router-view />
     <!-- <br v-for="index in 10" :key="index" /> -->
     <!-- <div class="wrapper">
       <Footer />
@@ -17,12 +17,19 @@ export default {
   components: {
     Navbar,
     // Footer\
-    
+
   },
 };
 </script>
 
 <style>
+.vs-navbar__line {
+  margin-top: -88px !important;
+  height: 88px !important;
+  position: relative !important;
+  background: rgb(199, 199, 199, .2) !important;
+  /* display: none !important; */
+}
 
 .w-full {
   width: 100% !important;

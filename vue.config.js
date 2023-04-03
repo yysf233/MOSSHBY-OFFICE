@@ -9,6 +9,15 @@ module.exports = {
     module: {
       rules: [
         {
+          test: /\.less$/i,
+          use: [
+            // compiles Less to CSS
+            "style-loader",
+            "css-loader",
+            "less-loader",
+          ],
+        },
+        {
           test: /\.md$/,
           loader: 'frontmatter-markdown-loader',
           options: {
@@ -22,7 +31,13 @@ module.exports = {
               })
           }
         }
-      ]
-    }
+      ],
+    },
+    // module: {
+
+    //   rules: [
+
+    //   ]
+    // }
   }
 }

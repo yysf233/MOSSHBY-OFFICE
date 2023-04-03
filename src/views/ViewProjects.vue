@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="text-center">Projects</h1>
     <hr />
-    <ProjectDes class="text-center" />
+    <!-- <ProjectDes class="text-center" /> -->
     <br />
     <div class="grid-3_xs-1_sm-2_md-2" v-if="projects.length">
       <div
@@ -46,16 +46,16 @@
 <script>
 import Nothing from '@/components/Nothing.vue'
 let ProjectDes = null
-try {
-  ProjectDes = require('@/../posts/data/project-des.md')
-} catch (e) {
-  ProjectDes = require('@/defaults/project-des.md')
-}
+// try {
+//   // ProjectDes = require('@/../posts/data/project-des.md')
+// } catch (e) {
+//   // ProjectDes = require('@/defaults/project-des.md')
+// }
 
 export default {
   name: 'ViewProjects',
   components: {
-    ProjectDes: ProjectDes.vue.component,
+    // ProjectDes: ProjectDes.vue.component,
     Nothing
   },
   data: function () {

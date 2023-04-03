@@ -4,7 +4,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 // import 'swiper/swiper-bundle.css'
 import App from './App.vue'
 import router from './router'
-// import Vuesax from 'vuesax'
+import Vuesax from 'vuesax'
+import 'animate.css';
 import 'vuesax/dist/vuesax.css'
 import 'boxicons'
 import 'boxicons/css/boxicons.min.css'
@@ -21,9 +22,9 @@ For geeks who wanted to write their blog site in Vue                 v0.1.0
 Powered by %cVueBlogger%cv0.1.0%c
 
 GitHub: https://github.com/samzhangjy/VueBlogger\nPlease star & fork to support the author!`,
-'background-color: #1A55ED; padding: 7px; color: #fff;',
-'background-color: #FCBF23; color: #000; padding: 7px;',
-'font-weight: bold')
+  'background-color: #1A55ED; padding: 7px; color: #fff;',
+  'background-color: #FCBF23; color: #000; padding: 7px;',
+  'font-weight: bold')
 
 Vue.config.productionTip = false
 

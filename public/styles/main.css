@@ -16,7 +16,7 @@ html {
 
 .content {
   min-height: 100%;
-  position: relative;
+  /* position: relative; */
 }
 
 * {
@@ -117,7 +117,7 @@ blockquote {
   background-color: #eef2f5;
   height: 80px;
   width: 100%;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
 }
 

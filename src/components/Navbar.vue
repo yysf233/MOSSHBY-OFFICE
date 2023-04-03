@@ -1,7 +1,6 @@
 <template>
   <div>
-    <vs-navbar shadow-scroll fixed center-collapsed not-line
-      style="border-radius: 0%;background-color: rgba(22, 22, 23, .8);">
+    <vs-navbar style="border-radius: 0%;background-color: rgba(67,67,68);">
       <template #left>
         <vs-button flat icon style="margin-right: 20px" class="menu-btn" @click="activeSidebar = !activeSidebar">
           <i class='bx bx-menu'></i>
@@ -14,13 +13,12 @@
         </router-link>
       </template>
       <vs-navbar-item v-for="(link, index) in links" :key="index" :active="active.name === link.name"
-        :to="active.name === link.name ? null : link.url" style="    color: #fff;
-        font-size: 20px;">
+        :to="active.name === link.name ? null : link.url" style="color: #fff;font-size: 20px;">
         {{ link.name }}
       </vs-navbar-item>
       <template #right>
         <vs-navbar-item>
-          <vs-switch @click="changeTheme()">
+          <vs-switch style="background:#fff;" @click="changeTheme()">
             <template #on>
               <i class='bx bxs-sun'></i>
             </template>
@@ -41,7 +39,6 @@
         {{ link.name }}
       </vs-sidebar-item>
     </vs-sidebar>
-    <!-- <div style="margin-bottom: 100px"></div> -->
   </div>
 </template>
 
@@ -63,11 +60,11 @@ export default {
       dark: false,
       links: [
         {
-          name: 'Home',
+          name: '主页',
           url: '/'
         },
         {
-          name: 'Posts',
+          name: '关于我们',
           url: '/posts'
         },
         {
@@ -116,6 +113,12 @@ export default {
 }
 </script>
 <style scoped>
+
+
+.vs-navbar-content {
+  position: static;
+}
+
 h3 {
   width: 60px;
   margin: 0;
@@ -123,13 +126,14 @@ h3 {
 
 img {
   width: 300%;
-  margin-left: 50px;
+  margin-left: 20%;
   margin-top: -48px;
   margin-bottom: -48px;
 }
 
 .off .bxs-moon:before {
-  content: "中";
+  content: " 中 ";
+  color: black;
 }
 
 .on .bxs-sun:before {
