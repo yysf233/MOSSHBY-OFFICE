@@ -4,7 +4,7 @@
     <el-carousel class="animate__animated animate__fadeInUp " height="600px" :interval="5000" arrow="always"
       indicator-position="none">
       <!-- <el-carousel-item v-for="(item, index) in imgData" :key="index">
-        <div :style="{ 'background-image': 'url(' + 'image' + index + ');' }">
+        <div :class="item">
         </div>
       </el-carousel-item> -->
       <el-carousel-item>
@@ -34,15 +34,83 @@
         </div>
         <div class="line-right"></div>
       </div>
-      <div class="swiper animate__animated animate__fadeInUp">
-        <swiper :options="swiperOption" ref="mySwiper">
-          <swiper-slide>I'm Slide 1</swiper-slide>
-          <swiper-slide>I'm Slide 2</swiper-slide>
-          <swiper-slide>I'm Slide 3</swiper-slide>
-          <div class="swiper-pagination" slot="pagination"></div>
+      <div class="swiper newnewest product-banner-container">
+
+        <swiper class="newest" :options="swiperOption" ref="mySwiper">
           <div class="swiper-button-prev" slot="button-prev"></div>
-          <div class="swiper-button-next" slot="button-next"></div>
+          <swiper-slide class="animate__animated animate__fadeInUp ">
+            <div class="swiper-slide carousel-img ">
+              <img src="http://www.haimati.cn/img/certificate.f4f704b7.png" alt="img">
+              <div class="lazy-animate-init lazy-animate-run" data-lazy-id="83" style="transition-delay: 0.1s;">
+                <p class="title">精致证件照</p>
+                <p class="tip">一张精致的证件照，能让你的生活焕然一新，能为你的生活带来意想不到的改变</p>
+                <div class="detail-btn">
+                  <p>查看详情</p>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-slide carousel-img lazy-animate-init lazy-animate-run swiper-slide-prev"
+              style="transition-delay: 0.3s;"><img src="	http://www.haimati.cn/img/occupation.8a243d1b.png" alt="img">
+              <div class="lazy-animate-init lazy-animate-run" data-lazy-id="85" style="transition-delay: 0.4s;">
+                <p class="title">职业形象照</p>
+                <p class="tip">职场中，专业干练的职业形象展示，对您的事业至关重要。职业形象照，展现你的职业态度和专业气质。</p>
+                <div class="detail-btn">
+                  <p>查看详情</p>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-slide carousel-img lazy-animate-init lazy-animate-run swiper-slide-active"
+              style="transition-delay: 0.6s; "><img src="	http://www.haimati.cn/img/flower-face.2bc065ce.png" alt="img">
+              <div class="lazy-animate-init lazy-animate-run" data-lazy-id="87" style="transition-delay: 0.7s;">
+                <p class="title">文艺照</p>
+                <p class="tip">用表情和神态表达你的个性，用镜头和照片定格下你张扬的宣言。</p>
+                <div class="detail-btn">
+                  <p>查看详情</p>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-slide carousel-img lazy-animate-init lazy-animate-run swiper-slide-next" data-lazy-id="90"
+              style="transition-delay: 0.9s; "><img src="http://www.haimati.cn/img/literary.f2ae8108.png" alt="img">
+              <div class="lazy-animate-init lazy-animate-run" data-lazy-id="89" style="transition-delay: 1s;">
+                <p class="title">花颜照</p>
+                <p class="tip">春回梦醒，潋滟一身花色</p>
+                <div class="detail-btn">
+                  <p>查看详情</p>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-slide carousel-img lazy-animate-init lazy-animate-run" data-lazy-id="92"
+              style="transition-delay: 1.2s; "><img src="http://www.haimati.cn/img/flower-face.2bc065ce.png" alt="img">
+              <div class="lazy-animate-init lazy-animate-run" data-lazy-id="91" style="transition-delay: 1.3s;">
+                <p class="title">轻婚纱</p>
+                <p class="tip">穿上婚纱，向你展示我一生最美的模样</p>
+                <div class="detail-btn">
+                  <p>查看详情</p>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination">
+            <span class="swiper-pagination-bullet zhengjian" tabindex="0" role="button" aria-label="Go to slide 1">
+              精致证件照
+            </span>
+            <span class="swiper-pagination-bullet zhiye" tabindex="0" role="button"
+              aria-label="Go to slide 2">职业形象照</span>
+            <span class="swiper-pagination-bullet wenyi" tabindex="0" role="button" aria-label="Go to slide 3">文艺照</span>
+            <span class="swiper-pagination-bullet huayan" tabindex="0" role="button" aria-label="Go to slide 4">花颜照</span>
+            <span class="swiper-pagination-bullet hunsha" tabindex="0" role="button" aria-label="Go to slide 5">轻婚纱</span>
+          </div>
         </swiper>
+        <div class="swiper-button-next" slot="button-next"></div>
+
       </div>
 
     </div>
@@ -273,15 +341,11 @@ export default {
       isShow: true,
       swiperOption: {
         loop: true,
-        autoplay: {
-          delay: 3000,
-          stopOnLastSlide: false,
-          disableOnInteraction: false
-        },
         // 显示分页
         pagination: {
           el: ".swiper-pagination",
-          clickable: true //允许分页点击跳转
+          clickable: true,//允许分页点击跳转,
+          bulletElement: 'span',
         },
         // 设置点击箭头
         navigation: {
@@ -307,7 +371,8 @@ export default {
   methods: {
     handleTab(val) {
       this.isShow = val;
-    }, scrollToTop() {
+    },
+    scrollToTop() {
       // 获取视窗高度
       var domHight = document.body.offsetHeight;
       // dom滚动位置
@@ -332,9 +397,11 @@ export default {
         if (scrollTop >= top && scrollTop <= bottom) {
           let ele = document.getElementById(`id${i}`);
           if (i === 1) {
-            ele.className = "process-content animate__animated animate__fadeInUp"
+            ele.classList.add('animate__animated', 'animate__fadeInUp')
+            // ele.className = "process-content animate__animated animate__fadeInUp"
           } else {
-            ele.className = `process-content animate__delay-${i - 1}s  animate__animated animate__fadeInUp`
+            ele.classList.add(`animate__delay-${i - 1}s`, 'animate__animated', 'animate__fadeInUp')
+            // ele.className = `process-content`
           }
           console.log('元素出现在可视区');
         } else {
@@ -404,7 +471,6 @@ export default {
   width: 6%;
   height: 10%;
   top: 95%;
-
 }
 
 .el-carousel__arrow i {
@@ -432,6 +498,83 @@ export default {
   padding: 90px 0 20px;
 }
 
+.newest {
+  height: 840px;
+  top: 80px;
+  /* display: flex; */
+}
+
+.newnewest {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.product-banner-container .carousel-img {
+  width: 938px;
+  font-size: 0;
+}
+
+.product-banner-container .carousel-img img {
+  width: 100%;
+}
+
+.product-banner-container .carousel-img img {
+  cursor: pointer;
+}
+
+.title {
+  cursor: pointer;
+  padding: 50px 0 8px;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.product-banner-container .carousel-img .tip {
+  cursor: pointer;
+  padding-bottom: 50px;
+  color: #919199;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.product-banner-container .carousel-img .detail-btn {
+  width: 368px;
+  height: 52px;
+  line-height: 52px;
+  margin: 0 auto 80px;
+  color: #000;
+  font-size: 14px;
+  border: 1.5px solid #000;
+  border-radius: 26px;
+  cursor: pointer;
+}
+
+.product-banner-container .carousel-img .detail-btn p,
+.product-banner-container .carousel-img .detail-btn span {
+  display: inline-block;
+}
+
+.lazy-animate-init.lazy-animate-run {
+  -webkit-transition: opacity .5s linear, -webkit-transform .5s ease;
+  transition: opacity .5s linear, -webkit-transform .5s ease;
+  transition: transform .5s ease, opacity .5s linear;
+  transition: transform .5s ease, opacity .5s linear, -webkit-transform .5s ease;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.lazy-animate-init {
+  visibility: hidden;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+/* 关于我们 */
+
 .about-us .line-wrap,
 .standard-service-wrap .line-wrap,
 .new-product-wrap .line-wrap,
@@ -445,20 +588,140 @@ export default {
   position: relative;
 }
 
+.swiper-wrapper {
+  margin: 80px auto;
+  /* margin-top: 80px; */
+}
+
 .swiper-container {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  background: pink;
+  /* position: relative; */
+  /* width: 40%; */
+  /* height: 200px; */
+
 }
 
 .swiper-container .swiper-slide {
-  width: 100%;
-  line-height: 200px;
-  background: yellowgreen;
+  /* width: 450px !important; */
+  /* width: 100%; */
+  /* line-height: 200px; */
   color: #000;
   font-size: 16px;
   text-align: center;
+  margin: 0 auto;
+}
+
+.swiper-pagination {
+  top: 0px;
+  padding: 40px 0 0 0;
+  display: flex;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: transparent;
+  font-weight: 600;
+}
+
+.swiper-pagination-bullet {
+  opacity: 1 !important;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+/* 轮播图按钮的颜色 */
+.swiper-button-next {
+  position: absolute;
+  right: 15%;
+  top: 30%;
+  width: 10%;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%236a708e'%2F%3E%3C%2Fsvg%3E");
+}
+
+.swiper-pagination-bullet {
+  display: inline-block;
+  width: 8%;
+  text-align: start;
+}
+
+.swiper-pagination-bullet:nth-of-type(1):before {
+  text-align: start;
+  content: "精致证件照";
+  display: inline-block;
+  width: 70px;
+}
+
+.swiper-pagination-bullet:nth-of-type(1):after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 1px;
+  height: 20px;
+  background-color: #45454d;
+}
+
+.swiper-pagination-bullet:nth-of-type(2):before {
+  text-align: start;
+  content: "职业形象照";
+  display: inline-block;
+  width: 70px;
+}
+
+.swiper-pagination-bullet:nth-of-type(2):after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  width: 1px;
+  height: 20px;
+  background-color: #45454d;
+}
+
+.swiper-pagination-bullet:nth-of-type(3):before {
+  text-align: start;
+  content: "文艺照";
+  display: inline-block;
+  width: 70px;
+}
+
+.swiper-pagination-bullet:nth-of-type(3):after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  width: 1px;
+  height: 20px;
+  background-color: #45454d;
+}
+
+.swiper-pagination-bullet:nth-of-type(4):before {
+  text-align: start;
+  content: "花颜照";
+  display: inline-block;
+  width: 70px;
+}
+
+.swiper-pagination-bullet:nth-of-type(4):after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  width: 1px;
+  height: 20px;
+  background-color: #45454d;
+}
+
+.swiper-pagination-bullet:nth-of-type(5):before {
+  text-align: start;
+  content: "轻婚纱";
+  display: inline-block;
+  width: 70px;
+}
+
+.swiper-button-prev {
+  position: absolute;
+  left: 15%;
+  top: 30%;
+  width: 10%;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%236a708e'%2F%3E%3C%2Fsvg%3E");
 }
 
 .line-wrap .line,
@@ -495,7 +758,7 @@ export default {
 }
 
 .line-wrap .line-content p {
-  padding-bottom: 3px;
+  /* padding-bottom: 3px; */
   color: #919199;
   font-size: 14px;
 }
@@ -510,12 +773,6 @@ export default {
   background-color: #48ce55;
   border-radius: 50%;
   display: inline-block;
-}
-
-.line-wrap .line-content p {
-  padding-bottom: 3px;
-  color: #919199;
-  font-size: 14px;
 }
 
 .line-wrap .line-content p:last-child {
