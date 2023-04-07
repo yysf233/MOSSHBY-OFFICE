@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="content">
+  <div id="app" style="overflow: hidden;" class="content">
     <Navbar />
     <router-view />
     <!-- <br v-for="index in 10" :key="index" /> -->
